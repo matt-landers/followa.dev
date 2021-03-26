@@ -2,7 +2,8 @@
   color: var(--color);
   padding: 1rem;
   box-shadow: 1px 1px 5px 1px var(--shadow-color);
-  transition: box-shadow var(--transition-s);
+  transition: box-shadow var(--transition-s) linear,
+    color var(--transition-s) linear;
   a {
     align-self: center;
   }

@@ -1,6 +1,7 @@
 .layout {
   color: var(--color);
   font-family: monospace;
+  transition: color var(--transition-s) linear;
   main {
     padding-top: 1rem;
     max-width: var(--container-width);

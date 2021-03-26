@@ -19,9 +19,6 @@
   margin-bottom: 1rem;
 }
 
-.github {
-}
-
 .tags {
   div {
     border-radius: 3px;
@@ -31,5 +28,8 @@
     padding: 3px 5px;
     background-color: var(--color);
     color: var(--bg-color);
+
+    transition: background-color var(--transition-s) linear,
+      color var(--transition-s) linear;
   }
 }
