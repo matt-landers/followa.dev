@@ -1,6 +1,7 @@
 .card {
   padding: 1rem;
   border: 1px solid rgb(47, 51, 54);
+  transition: border-color var(--transition-s) linear;
 
   a {
     font-weight: bold;
@@ -8,16 +9,20 @@
 }
 .name {
   margin-right: 1rem;
+  margin-bottom: 1rem;
 }
 .twitter {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.body {
+  margin-bottom: 1rem;
 }
 
 .github {
 }
 
 .tags {
-  margin-top: 0.5rem;
   div {
     border-radius: 3px;
     font-size: 75%;

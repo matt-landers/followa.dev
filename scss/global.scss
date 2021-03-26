@@ -1,9 +1,15 @@
 :root {
   --color: white;
+  --shadow-color: rgba(255, 255, 255, 0.3);
   --bg-color: black;
+  --container-width: 680px;
+  --transition-s: 0.25s;
+  --border-color: rgb(47, 51, 54);
 }
 
 [data-theme='light'] {
+  --shadow-color: rgba(0, 0, 0, 0.3);
   --color: black;
   --bg-color: white;
+  --border-color: invert(rgb(47, 51, 54));
 }

@@ -15,7 +15,7 @@ const Card: React.FC<Developer> = ({
     <div className={styles.card}>
       <div className="pic"></div>
       <div className="info">
-        <div className="name">
+        <div className={styles.name}>
           <a
             href={`https://twitter.com/${twitter}`}
             target="_blank"
@@ -24,14 +24,14 @@ const Card: React.FC<Developer> = ({
           </a>
           <span className={styles.twitter}>{twitter}</span>
         </div>
-        <div className="body">
+        <div className={styles.body}>
           <span className={styles.github}>{github}</span>
         </div>
         <div className={styles.tags}>
           {languages &&
             languages.map(({ name }) => (
-              <Link key={name} href={`/filters/${name}`}>
-                <a href={`/filters/${name}`}>
+              <Link key={name} href={`/filters/${name.toLowerCase()}`}>
+                <a href={`/filters/${name.toLowerCase()}`}>
                   <div className={styles.tag}>{name}</div>
                 </a>
               </Link>

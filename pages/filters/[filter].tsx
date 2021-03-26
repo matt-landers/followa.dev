@@ -75,8 +75,27 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 }
 
 export async function getStaticPaths() {
+  const client = getApolloClient({});
+  const result = await client.query({
+    query: gql`
+      {
+        terms {
+          nodes {
+            name
+          }
+        }
+      }
+    `,
+  });
+
+  const terms = (result.data?.terms.nodes ?? []) as { name: string }[];
+
   return {
-    paths: [{ params: { filter: 'react' } }],
+    paths: terms.map(({ name }) => ({
+      params: {
+        filter: name.toLowerCase(),
+      },
+    })),
     fallback: 'blocking',
   };
 }

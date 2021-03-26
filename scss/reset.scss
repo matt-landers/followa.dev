@@ -5,12 +5,15 @@ body {
 
 html {
   min-height: 100vh;
+  font-size: 10px;
 }
 
 body {
   min-height: 100%;
   min-height: 100vh;
   background-color: var(--bg-color);
+  font-size: 1.75rem;
+  transition: background-color var(--transition-s) linear;
 }
 
 a {
