@@ -30,7 +30,6 @@ const Home = () => {
   const { data } = useQuery(GET_ALL_DEVS);
 
   const developers: { data: Developer }[] = data?.developers?.nodes ?? [];
-  console.log(developers);
   return (
     <Layout>
       {developers.map((developer) => (

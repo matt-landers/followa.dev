@@ -1,4 +1,6 @@
 import { Developer } from 'lib/types';
+import Link from 'next/link';
+import React from 'react';
 import styles from './Card.module.scss';
 
 const Card: React.FC<Developer> = ({
@@ -28,7 +30,11 @@ const Card: React.FC<Developer> = ({
         <div className={styles.tags}>
           {languages &&
             languages.map(({ name }) => (
-              <div className={styles.tag}>{name}</div>
+              <Link key={name} href={`/filters/${name}`}>
+                <a href={`/filters/${name}`}>
+                  <div className={styles.tag}>{name}</div>
+                </a>
+              </Link>
             ))}
         </div>
       </div>
