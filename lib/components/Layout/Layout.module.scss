@@ -1,0 +1,10 @@
+.layout {
+  background-color: var(--bg-color);
+  color: var(--color);
+  font-family: monospace;
+  main {
+    padding-top: 1rem;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+}

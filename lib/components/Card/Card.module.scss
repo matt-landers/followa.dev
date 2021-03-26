@@ -1,0 +1,30 @@
+.card {
+  padding: 1rem;
+  border: 1px solid rgb(47, 51, 54);
+
+  a {
+    font-weight: bold;
+  }
+}
+.name {
+  margin-right: 1rem;
+}
+.twitter {
+  font-size: 0.75rem;
+}
+
+.github {
+}
+
+.tags {
+  margin-top: 0.5rem;
+  div {
+    border-radius: 3px;
+    font-size: 75%;
+    margin-right: 0.5rem;
+    display: inline-block;
+    padding: 3px 5px;
+    background-color: var(--color);
+    color: var(--bg-color);
+  }
+}
