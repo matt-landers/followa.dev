@@ -49,7 +49,6 @@ const DevSubmissionPage: React.FC<DevSubmissionPageProps> = (props) => {
             id,
             data,
           );
-          console.log(entryId);
         }}
       />
     </Layout>

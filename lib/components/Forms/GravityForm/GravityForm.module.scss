@@ -27,6 +27,11 @@
     color: var(--bg-color);
     background-color: var(--color);
   }
+  button:disabled {
+    color: white;
+    background-color: grey;
+    cursor: unset;
+  }
   input {
     padding: 1rem;
     font-size: 1.5rem;
@@ -38,4 +43,12 @@
   input:focus {
     border-radius: 0;
   }
+}
+
+.error {
+  color: var(--error-color);
+}
+
+.success {
+  color: var(--success-color);
 }

@@ -17,7 +17,6 @@ async function createForm(
       formId,
     },
   });
-  console.log(data);
   return data.createGravityFormsDraftEntry.resumeToken;
 }
 
@@ -81,17 +80,29 @@ async function finalizeForm(
   return data.submitGravityFormsDraftEntry.entryId;
 }
 
+async function validateTwitterHandle(handle: string) {
+  const result = await fetch(`/api/twitter/handle/${handle}`);
+  return result.ok;
+}
+
 export async function submitForm(
   client: ApolloClient<NormalizedCacheObject>,
   formId: number,
   data: GravityFormData,
 ) {
+  const twitterField = Object.keys(data).find(
+    (key) => data[key].field.label.toLowerCase() === 'twitter',
+  );
   try {
+    if (!(await validateTwitterHandle(data[twitterField as string].value))) {
+      throw new Error('Invalid Twitter handle.');
+    }
     const resumeToken = await createForm(client, formId);
     await saveFields(client, resumeToken, data);
     const entryId = finalizeForm(client, resumeToken);
     return entryId;
   } catch (e) {
     console.error(e);
+    throw e;
   }
 }
