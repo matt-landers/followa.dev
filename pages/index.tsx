@@ -9,7 +9,7 @@ import Card from 'lib/components/Card/Card';
 
 const GET_ALL_DEVS = gql`
   {
-    developers {
+    developers(first: 100) {
       nodes {
         data: acfDeveloper {
           company
