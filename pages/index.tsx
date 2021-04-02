@@ -30,9 +30,17 @@ const Home = () => {
   const { data } = useQuery(GET_ALL_DEVS);
 
   const developers: { data: Developer }[] = data?.developers?.nodes ?? [];
+  const sorted = developers.slice().sort((a, b) => {
+    if (a.data.company === 'WP Engine') {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+
   return (
     <Layout>
-      {developers.map((developer) => (
+      {sorted.map((developer) => (
         <Card key={developer.data.twitter} {...developer.data} />
       ))}
     </Layout>
