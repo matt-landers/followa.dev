@@ -9,6 +9,10 @@
   }
 }
 
+.logo {
+  flex: 1;
+}
+
 .container {
   margin: 0 auto;
   display: flex;
@@ -16,6 +20,18 @@
 }
 
 .toggle {
-  display: inline;
-  margin-left: auto;
+  margin-left: 2rem;
+}
+
+.linkbutton {
+  background: var(--color);
+  color: var(--bg-color);
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--bg-color);
+  transition: all 0.2s;
+  &:hover {
+    background: var(--bg-color);
+    border: 2px solid var(--color);
+    color: var(--color);
+  }
 }
