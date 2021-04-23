@@ -1,0 +1,54 @@
+.form {
+  p {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+  }
+  label {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+  }
+  button {
+    display: block;
+    padding: 0.35rem 1.2em;
+    border: 2px solid var(--color);
+    border-radius: 0.12rem;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: var(--color);
+    text-align: center;
+    transition: all 0.2s;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.25em;
+    margin: 1.5rem 0;
+  }
+  button:hover {
+    color: var(--bg-color);
+    background-color: var(--color);
+  }
+  button:disabled {
+    color: white;
+    background-color: grey;
+    cursor: unset;
+  }
+  input {
+    padding: 1rem;
+    font-size: 1.5rem;
+    color: var(--color);
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border: 1px solid var(--color);
+  }
+  input:focus {
+    border-radius: 0;
+  }
+}
+
+.error {
+  color: var(--error-color);
+}
+
+.success {
+  color: var(--success-color);
+}
