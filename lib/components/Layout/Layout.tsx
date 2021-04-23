@@ -10,7 +10,7 @@ const Layout: React.FC = ({ children }) => {
     <>
       <Head>
         <meta name="google" content="notranslate" />
-        <meta http-equiv="Content-Language" content="en" />
+        <meta httpEquiv="Content-Language" content="en" />
         <title>FollowA.Dev</title>
       </Head>
       <div className={styles.layout}>

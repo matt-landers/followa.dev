@@ -17,6 +17,11 @@ const Nav = () => {
             Submit a Dev
           </a>
         </Link>
+        <Link href="/auth/login">
+          <a className={styles.linkbutton} href="/auth/login">
+            Login
+          </a>
+        </Link>
         <div className={styles.toggle}>
           <Toggle />
         </div>
