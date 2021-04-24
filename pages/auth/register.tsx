@@ -3,7 +3,7 @@ import Layout from 'lib/components/Layout/Layout';
 import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react';
 
-import styles from '../../scss/Register.module.scss';
+import styles from '../../scss/Forms.module.scss';
 
 const REGISTER = gql`
   mutation RegisterUser(

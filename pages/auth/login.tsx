@@ -4,7 +4,7 @@ import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
-import styles from '../../scss/Register.module.scss';
+import styles from '../../scss/Forms.module.scss';
 
 const LOGIN = gql`
   mutation Login($email: String!, $password: String!) {
