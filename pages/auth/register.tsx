@@ -1,5 +1,7 @@
 import { gql, useMutation } from '@apollo/client';
 import Layout from 'lib/components/Layout/Layout';
+import { Profile } from 'lib/types';
+
 import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react';
 
@@ -30,14 +32,6 @@ const REGISTER = gql`
     }
   }
 `;
-
-interface Profile {
-  password: string;
-  confirmPassword: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-}
 
 const Register = () => {
   const [profile, setProfile] = useState<Partial<Profile>>({});

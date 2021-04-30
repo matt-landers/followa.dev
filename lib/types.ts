@@ -6,3 +6,11 @@ export interface Developer {
   personalBlog?: string;
   company?: string;
 }
+
+export interface Profile {
+  password: string;
+  confirmPassword: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+}
