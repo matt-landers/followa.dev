@@ -43,6 +43,9 @@
   input:focus {
     border-radius: 0;
   }
+  input:disabled {
+    opacity: 0.75;
+  }
 }
 
 .error {

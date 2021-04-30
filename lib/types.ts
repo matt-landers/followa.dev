@@ -8,6 +8,7 @@ export interface Developer {
 }
 
 export interface Profile {
+  id: string;
   password: string;
   confirmPassword: string;
   firstName: string;
