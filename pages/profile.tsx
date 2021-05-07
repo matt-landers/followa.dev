@@ -1,59 +1,29 @@
-import { gql, useApolloClient, useMutation, useQuery } from '@apollo/client';
+import { useApolloClient } from '@apollo/client';
 import Layout from 'lib/components/Layout/Layout';
-import React, { useEffect, useState } from 'react';
-import { Profile } from 'lib/types';
+import React, { useState } from 'react';
 
 import styles from '../scss/Forms.module.scss';
 import { addAuthHeader } from 'lib/utils/apollo';
-
-const UPDATE_USER = gql`
-  mutation UpdateUser($id: ID!, $firstName: String!, $lastName: String!) {
-    updateUser(input: { id: $id, firstName: $firstName, lastName: $lastName }) {
-      user {
-        id
-        databaseId
-      }
-    }
-  }
-`;
-
-const GET_PROFILE = gql`
-  {
-    viewer {
-      id
-      firstName
-      lastName
-      email
-    }
-  }
-`;
+import { actions, useUser } from 'lib/state/profile/actor';
+import type { User } from 'lib/state/profile/services';
 
 const ProfilePage = () => {
   addAuthHeader(useApolloClient());
-  const [profile, setProfile] = useState<Partial<Profile>>();
-  const [updateUser, { loading, data: mutData, error }] = useMutation(
-    UPDATE_USER,
-  );
-  const { data } = useQuery(GET_PROFILE);
-  const user = data?.viewer;
-
-  useEffect(() => {
-    if (user) {
-      setProfile({
-        ...user,
-      });
-    }
-  }, [data]);
+  let profile = useUser();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | undefined>();
+  const [saved, setSaved] = useState(false);
 
   const updateProfile: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    const updated = {
+    if (!profile) return;
+    const updated: User = {
       ...profile,
       [e.target.name]: e.target.value,
     };
-    setProfile(updated);
+    profile = updated;
   };
 
-  if (!profile || !user) {
+  if (!profile) {
     return (
       <Layout>
         <h1>Profile</h1>
@@ -62,22 +32,25 @@ const ProfilePage = () => {
     );
   }
 
-  const save: React.FormEventHandler<HTMLFormElement> = (e) => {
+  const save: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    updateUser({
-      variables: {
-        ...profile,
-      },
-    });
+    setLoading(true);
+    setSaved(false);
+    try {
+      await actions.updateProfile({ ...(profile as any) });
+      setSaved(true);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <Layout>
       <h1>Profile</h1>
-      {error?.message && (
-        <p className={styles.error}>Error: {error?.message}</p>
-      )}
-      {mutData?.updateUser && <p className={styles.success}>User updated.</p>}
+      {error && <p className={styles.error}>Error: {error}</p>}
+      {saved && <p className={styles.success}>User updated.</p>}
       <form className={styles.form} onSubmit={save}>
         <label htmlFor="email">Email</label>
         <input

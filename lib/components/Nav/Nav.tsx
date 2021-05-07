@@ -1,7 +1,19 @@
+import { gql } from '@apollo/client/core';
 import Link from 'next/link';
 import React from 'react';
 import Toggle from '../Toggle/Toggle';
 import styles from './Nav.module.scss';
+
+const UPDATE_PCS = gql`
+  mutation UPDATE_PCS($id: ID!, $pcs: PrefersColorSchemeEnum!) {
+    updateUser(input: { id: $id, prefersColorScheme: $pcs }) {
+      user {
+        id
+        databaseId
+      }
+    }
+  }
+`;
 
 const Nav = () => {
   return (
