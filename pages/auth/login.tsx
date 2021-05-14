@@ -66,6 +66,13 @@ const Login = () => {
           Register
         </a>
       </Link>
+      <br />
+      <br />
+      <Link href="/auth/sendreset">
+        <a href="/auth/sendreset" style={{ textDecoration: 'underline' }}>
+          Reset Password
+        </a>
+      </Link>
     </Layout>
   );
 };

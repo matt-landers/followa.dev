@@ -8,6 +8,7 @@ import {
   updateProfile,
   User,
 } from './services';
+import { resetPassword, sendResetLink } from './services/login';
 
 export interface ProfileState {
   loggedIn: boolean;
@@ -60,9 +61,33 @@ export const actions = {
     state.prefersColorScheme = pcs;
   },
   async getUser() {
-    const user = await getUserProfile();
-    state.user = user;
-    state.prefersColorScheme = state.user.prefersColorScheme;
+    try {
+      const user = await getUserProfile();
+      state.user = user;
+      state.prefersColorScheme = state.user.prefersColorScheme;
+      state.loggedIn = true;
+    } catch (e) {
+      console.error(e);
+      state.loggedIn = false;
+    }
+  },
+  async resetPassword(email: string): Promise<boolean> {
+    try {
+      await resetPassword(email);
+      return true;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  },
+  async sendResetLink(email: string): Promise<boolean> {
+    try {
+      await sendResetLink(email);
+      return true;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
   },
 };
 

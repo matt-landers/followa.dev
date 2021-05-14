@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { AppContext, AppInitialProps } from 'next/app';
 import { HeadlessProvider } from '@wpengine/headless/react';
 
@@ -6,6 +6,7 @@ import '../scss/global.scss';
 import '../scss/reset.scss';
 import { useApolloClient } from '@apollo/client';
 import { setApolloClient } from 'lib/state/profile/services';
+import { addAuthHeader } from 'lib/utils/apollo';
 
 /* eslint-disable react/jsx-props-no-spreading */
 export default function App({
@@ -15,6 +16,7 @@ export default function App({
   const ServiceProvider: React.FC = ({ children }) => {
     const client = useApolloClient();
     if (client) {
+      addAuthHeader(client);
       setApolloClient(client);
     } else {
       return <></>;

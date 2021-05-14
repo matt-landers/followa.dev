@@ -49,8 +49,6 @@ const GravityForm: React.FC<GravityFormProps> = ({ id, fields, onSubmit }) => {
     setTimeout(() => setSuccess(false), 5000);
   }
 
-  console.log(formData);
-
   return (
     <>
       {error && <p className={styles.error}>Error: {error}</p>}

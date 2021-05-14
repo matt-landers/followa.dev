@@ -1,14 +1,11 @@
-import { useApolloClient } from '@apollo/client';
 import Layout from 'lib/components/Layout/Layout';
 import React, { useState } from 'react';
 
 import styles from '../scss/Forms.module.scss';
-import { addAuthHeader } from 'lib/utils/apollo';
 import { actions, useUser } from 'lib/state/profile/actor';
 import type { User } from 'lib/state/profile/services';
 
 const ProfilePage = () => {
-  addAuthHeader(useApolloClient());
   let profile = useUser();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | undefined>();

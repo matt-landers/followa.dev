@@ -7,7 +7,11 @@ import { setContext } from '@apollo/client/link/context';
 let authAdded = false;
 
 export function addAuthHeader(client: ApolloClient<object>) {
-  if (typeof window === 'undefined' || authAdded) return client;
+  if (
+    typeof window === 'undefined'
+    //|| authAdded
+  )
+    return client;
 
   authAdded = true;
 

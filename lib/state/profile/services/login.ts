@@ -51,3 +51,49 @@ export async function loginUser(
     prefersColorScheme: u.prefersColorScheme,
   };
 }
+
+const RESET_PASSWORD = gql`
+  mutation ResetPassword($email: String!) {
+    sendPasswordResetEmail(input: { username: $email }) {
+      user {
+        id
+      }
+    }
+  }
+`;
+
+export async function resetPassword(email: string) {
+  const { data, errors } = await client.mutate({
+    mutation: RESET_PASSWORD,
+    variables: {
+      email,
+    },
+  });
+
+  if (errors) {
+    throw new Error(errors[0].message);
+  }
+}
+
+const SEND_RESET_LINK = gql`
+  mutation ResetLink($email: String!) {
+    sendPasswordResetEmail(input: { username: $email }) {
+      user {
+        id
+      }
+    }
+  }
+`;
+
+export async function sendResetLink(email: string) {
+  const { data, errors } = await client.mutate({
+    mutation: SEND_RESET_LINK,
+    variables: {
+      email,
+    },
+  });
+
+  if (errors) {
+    throw new Error(errors[0].message);
+  }
+}
