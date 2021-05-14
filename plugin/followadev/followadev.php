@@ -14,6 +14,8 @@
  
 require_once plugin_dir_path( __FILE__ ) . '/src/PrefersColorSchemeEnum.php';
 require_once plugin_dir_path( __FILE__ ) . '/src/UserUpdateFields.php';
+require_once plugin_dir_path( __FILE__ ) . '/src/ResetPasswordSettings.php';
 
 (new FollowADev\PrefersColorSchemeEnum())->register_hooks();
 (new FollowADev\UserUpdateFields())->register_hooks();
+(new FollowADev\ResetPasswordSettings())->register_hooks();
