@@ -53,8 +53,10 @@ export async function loginUser(
 }
 
 const RESET_PASSWORD = gql`
-  mutation ResetPassword($email: String!) {
-    sendPasswordResetEmail(input: { username: $email }) {
+  mutation ResetPassword($key: String!, $login: String!, $password: String!) {
+    resetUserPassword(
+      input: { key: $key, login: $login, password: $password }
+    ) {
       user {
         id
       }
@@ -62,11 +64,17 @@ const RESET_PASSWORD = gql`
   }
 `;
 
-export async function resetPassword(email: string) {
+export async function resetPassword(
+  key: string,
+  login: string,
+  password: string,
+) {
   const { data, errors } = await client.mutate({
     mutation: RESET_PASSWORD,
     variables: {
-      email,
+      login,
+      key,
+      password,
     },
   });
 

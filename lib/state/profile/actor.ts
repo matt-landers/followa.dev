@@ -71,9 +71,13 @@ export const actions = {
       state.loggedIn = false;
     }
   },
-  async resetPassword(email: string): Promise<boolean> {
+  async resetPassword(
+    key: string,
+    login: string,
+    password: string,
+  ): Promise<boolean> {
     try {
-      await resetPassword(email);
+      await resetPassword(key, login, password);
       return true;
     } catch (e) {
       console.error(e);
